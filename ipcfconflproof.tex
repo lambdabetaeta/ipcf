@@ -1,0 +1,304 @@
+We will use a variant of the proof in \cite{Kavvos2017b}, i.e.
+the method of \emph{parallel reduction}. This kind of proof was
+originally discovered by Tait and Martin-L\"of, and is nicely
+documented in \cite{Takahashi1995}. Because of the intensional
+nature of our $\ibox{(-)}$ constructs, ours will be more nuanced
+and fiddly than any in \emph{op. cit.} The method is this: we will
+introduce a second notion of reduction, \[
+  \redp\ \subseteq \Lambda \times \Lambda
+\] which we will `sandwich' between reduction proper and its
+transitive closure: \[
+  \red{}\ \subseteq\ \redp\ \subseteq\ \redt
+\] We will then show that $\redp$ has the diamond property. By the
+above inclusions, the transitive closure $\redp^\ast$ of $\redp$
+is then equal to $\redt$, and hence $\red$ is Church-Rosser.
+
+In fact, we will follow \cite{Takahashi1995} in doing something
+better: we will define for each term $M$ its \emph{complete
+development}, $M^\star$. The complete development is intuitively
+defined by `unrolling' all the redexes of $M$ at once. We will
+then show that if $M \redp N$, then $N \redp M^\star$. $M^\star$
+will then suffice to close the diamond: \[
+  \begin{tikzcd}
+    & M
+	\arrow[dr, Rightarrow]
+	\arrow[dl, Rightarrow]
+    &  \\
+    P
+      \arrow[dr, Rightarrow, dotted]
+    & 
+    & Q 
+      \arrow[dl, Rightarrow, dotted] \\
+    & M^\star
+  \end{tikzcd}
+\]
+
+\begin{figure}
+  \centering
+  \caption{Parallel Reduction}
+  \begin{framed}
+    \input{ipcfparallel}
+  \end{framed}
+  \label{fig:parallel}
+\end{figure}
+
+The parallel reduction $\redp$ is defined in Figure
+\ref{fig:parallel}. Instead of the axiom $(\textsf{refl})$ we
+would more commonly have an axiom for variables, $x \redp{} x$,
+and $M \redp{} M$ would be derivable. However, we do not have a
+congruence rule neither for $\ibox{(-)}$ nor for L\"ob's rule, so
+that possibility would be precluded. We are thus forced to include
+$M \redp{} M$, which slightly complicates the lemmas that follow.
+
+The main lemma that usually underpins the confluence proof is
+this: if $M \redp{} N$ and $P \redp{} Q$, $M[P/x] \redp{} N[Q/x]$.
+However, this is intuitively wrong: no reductions should happen
+under boxes, so this should only hold if we are substituting for a
+variable \emph{not} occurring under boxes.  Hence, this lemma
+splits into three different ones:
+\begin{itemize}
+  \item
+    $P \redp{} Q$ implies $M[P/x] \redp{} M[Q/x]$, if $x$ does not
+    occur under boxes: this is the price to pay for replacing the
+    variable axiom with (\textsf{refl}).
+  \item
+    $M \redp{} N$ implies $M[P/u] \redp{} N[P/u]$, even if $u$ is
+    under a box.
+  \item
+    If $x$ does not occur under boxes, $M \redp{} N$ and $P
+    \redp{} Q$ indeed imply $M[P/x] \redp{} N[Q/x]$
+\end{itemize} 
+\begin{lem}
+  \label{lem:substint}
+  If $M \redp{} N$ then $M[P/u] \redp{} N[P/u]$.
+\end{lem}
+\begin{proof}
+  By induction on the generation of $M \redp{} N$. Most cases
+  trivially follow, or consist of simple invocations of the IH. In
+  the case of $(\rightarrow\beta)$, the known substitution lemma
+  suffices. Let us look at the cases involving boxes.
+  \begin{indproof}
+    \indcase{$\Box\beta$}
+      Then $M \redp{} N$ is $\letbox{v}{\ibox{R}}{S} \redp{}
+      S'[R/v]$ with $S \redp{} S'$. By the IH, we have that
+      $S[P/u] \redp{} S'[P/u]$, so \[
+	\letbox{v}{\ibox{R[P/u]}}{S[P/u]} \redp S'[P/u][R[P/u]/v]
+      \] and this last is $\alpha$-equivalent to $S'[R/v][P/u]$ by
+      the substitution lemma.
+    \indcase{$\Box\textsf{fix}$}
+      A similar application of the substitution lemma.
+    \indcase{$\Box\textsf{int}$}
+      Then $M \redp{} N$ is $\tilde f(\ibox{Q}) \redp{}
+      \ibox{f(Q)}$. Hence \[
+        \left(\tilde f(\ibox{Q})\right)[P/u]
+          \equiv
+        \tilde f(\ibox{Q})
+          \redp{}
+        \ibox{f(Q)}
+          \equiv
+        \left(\ibox{f(Q)}\right)[P/u]
+    \] simply because both $Q$ and $f(Q)$ are closed.
+  \end{indproof}
+\end{proof}
+
+\begin{lem} 
+  \label{lem:substredp}
+  If $P \redp Q$ and $x \not\in \bfv{M}$, then $M[P/x] \redp
+  M[Q/x]$.
+\end{lem}
+\begin{proof}
+  By induction on the term $M$. The only non-trivial cases are
+  those for $M$ a variable, $\ibox{M'}$ or $\fixlob{z}{M'}$. In
+  the first case, depending on which variable $M$ is, use either
+  $(\textsf{refl})$, or the assumption $P \redp Q$. In the latter
+  two, $(\ibox{M'})[P/x] \equiv \ibox{M'} \equiv (\ibox{M'})[Q/x]$
+  as $x$ does not occur under a box, so use $(\textsf{refl})$, and
+  similarly for $\fixlob{z}{M'}$.
+\end{proof}
+
+\begin{lem} 
+  \label{lem:redp}
+  If $M \redp N$, $P \redp Q$, and $x \not\in \bfv{M}$, then \[
+    M[P/x] \redp N[Q/x]
+  \]
+\end{lem}
+
+\begin{proof}
+  By induction on the generation of $M \redp N$. The cases for
+  most congruence rules and constants follow trivially, or from
+  the IH. We prove the rest.
+  \begin{indproof}
+    \indcase{$\textsf{refl}$}
+      Then $M \redp N$ is actually $M \redp M$, so we use Lemma
+      \ref{lem:substredp} to infer $M[P/x] \redp M[Q/x]$. 
+
+    \indcase{$\Box\textsf{int}$}
+      Then $M \redp N$ is actually $\tilde f(\ibox{M}) \redp
+      \ibox{f(M)}$. But $M$ and $f(M)$ are closed, so
+      $\left(\tilde f(\ibox{M})\right)[P/x] \equiv \tilde
+      f(\ibox{M}) \redp \ibox{f(M)} \equiv
+      \left(\ibox{f(M)}\right)[Q/x]$.
+
+    \indcase{$\supset_i$}
+      Then $M \redp N$ is $\supset_G\ \textsf{true}\ M\ N \redp
+      M'$ with $M \redp M'$. By the IH, $M[P/x] \redp M'[Q/x]$, so
+      \[
+	\supset_G\ \textsf{true}\ M[P/x]\ N[P/x]
+	  \redp
+	M'[Q/x]
+      \] by a single use of $(\supset_1)$. The case for
+      $\textsf{false}$ is similar.
+
+    \indcase{$\rightarrow \beta$}
+      Then $(\lambda x'{:}A.\ M)N \redp N'[M'/x']$, where $M \redp
+      M'$ and $N \redp N'$. Then \[
+	\left((\lambda x'{:}A.\ M)N\right)[P/x]
+	  \equiv
+	(\lambda x'{:}A.\ M[P/x])(N[P/x])
+      \] But, by the IH, $M[P/x] \redp M'[Q/x]$ and $N[P/x] \redp
+      N'[Q/x]$. So by $(\rightarrow \beta)$ we have \[
+        (\lambda x'{:}A.\ M[P/x])(N[P/x])
+          \redp
+        M'[Q/x]\left[N'[Q/x]/x'\right]
+      \] But this last is $\alpha$-equivalent to
+      $\left(M'[N'/x']\right)\left[Q/x\right]$ by the substitution
+      lemma.
+
+    \indcase{$\Box\beta$}
+      Then $\letbox{u'}{\ibox{M}}{N} \redp N'[M/u']$ where $N
+      \redp N'$. By assumption, we have that $x \not\in \fv{M}$
+      and $x \not\in \bfv{N}$. Hence, we have by the IH that
+      $N[P/x] \redp N'[Q/x]$, so by applying $(\Box\beta)$ we get
+      \begin{align*}
+	(\letbox{u'}{\ibox{M}}{N})[P/x]
+	  \equiv\
+	    &\letbox{u'}{\ibox{M[P/x]}}{N[P/x]} \\
+	  \equiv\
+	    &\letbox{u'}{\ibox{M}}{N[P/x]} \\
+	  \redp\
+	    &N'[Q/x][M/u']
+      \end{align*} But this last is $\alpha$-equivalent to
+      $N'[M/u'][Q/x]$, by the substitution lemma and the fact that
+      $x$ does not occur in $M$.
+
+    \indcase{$\Box\textsf{fix}$}
+      Then $\fixlob{z}{M} \redp{} M'[\ibox{(\fixlob{z}{M})}/z]$,
+      with $M \redp{} M'$. As $x \not\in \bfv{\fixlob{z}{M}}$, we
+      have that $x \not\in \fv{M}$, and by Lemma
+      \ref{lem:varmon}, $x \not\in \fv{M'}$ either, so \[
+        (\fixlob{z}{M})[P/x] \equiv \fixlob{z}{M}
+      \] and\[
+        M'[\fixlob{z}{M}/z][Q/x]
+          \equiv
+        M'[Q/x][\fixlob{z}{M[Q/x]}/z]
+	  \equiv
+	M'[\fixlob{z}{M}/z]
+      \] Thus, a single use of $(\Box\textsf{fix})$ suffices.
+  \end{indproof}
+\end{proof}
+
+We now pull the following definition out of the hat:
+\begin{defn}[Complete development]
+  The \emph{complete development} $M^\star$ of a term $M$ is
+  defined by the following clauses:
+    \begin{align*}
+      x^\star
+        &\defeq x \\
+      c^\star
+        &\defeq c \qquad (c \in 
+	  \{\tilde f, \widehat{n},
+	    \textsf{zero?}, \dots \}) \\
+      \left(\lambda x{:}A.\ M\right)^\star
+        &\defeq \lambda x{:}A.\ M^\star \\
+      \left(\tilde{f}(\ibox{M})\right)^\star
+	&\defeq \ibox{f(M)} \qquad \text{if $M$ is closed} \\
+      \left(\left(\lambda x{:}A.\ M\right)N\right)^\star
+        &\defeq M^\star[N^\star/x] \\
+      \left(\supset_G\ \textsf{true}\ M\ N\right)^\star
+        &\defeq M^\star \\
+      \left(\supset_G\ \textsf{false}\ M\ N\right)^\star
+        &\defeq N^\star \\
+      \left(MN\right)^\star
+        &\defeq M^\star N^\star \\
+      \left(\ibox{M}\right)^\star
+        &\defeq \ibox{M} \\
+      \left(\letbox{u}{\ibox{M}}{N}\right)^\star
+        &\defeq N^\star[M/u] \\
+      \left(\letbox{u}{M}{N}\right)^\star
+        &\defeq \letbox{u}{M^\star}{N^\star} \\
+      \left(\fixlob{z}{M}\right)^\star
+        &\defeq M^\star[\ibox{(\fixlob{z}{M})}/z]
+    \end{align*}
+\end{defn}
+
+\noindent We need the following two technical results as well.
+
+\begin{lem}
+  \label{lem:reflstar}
+  $M \redp{} M^\star$
+\end{lem}
+\begin{proof}
+  By induction on the term $M$. Most cases follow immediately by
+  (\textsf{refl}), or by the IH and an application of the relevant
+  rule. The case for $\ibox{M}$ follows by $(\textsf{refl})$, the
+  case for $\fixlob{z}{M}$ follows by $(\Box\textsf{fix})$, and
+  the case for $\tilde f(\ibox{M})$ by $(\Box\textsf{int})$.
+\end{proof}
+
+\begin{lem}[BFV antimonotonicity]
+  \label{lem:varmon}
+  If $M \redp{} N$ then $\bfv{N} \subseteq \bfv{M}$.
+\end{lem}
+\begin{proof}
+  By induction on $M \redp{} N$.
+\end{proof}
+
+
+\noindent And here is the main result:
+
+\begin{thm}
+  \label{thm:mainredp}
+  If $M \redp P$, then $P \redp M^\star$.
+\end{thm}
+
+\begin{proof}
+  By induction on the generation of $M \redp P$. The case of
+  $(\textsf{refl})$ follows by Lemma \ref{lem:reflstar}, and the
+  cases of congruence rules follow from the IH. We show the rest.
+  \begin{indproof}
+    \indcase{$\rightarrow\beta$}
+      Then we have $(\lambda x{:}A.\ M)N \redp M'[N'/x]$, with $M
+      \redp M'$ and $N \redp N'$. By the IH, $M' \redp M^\star$
+      and $N' \redp N^\star$. We have that $x \not\in \bfv{M}$,
+      so by Lemma \ref{lem:varmon} we get that $x \not\in
+      \bfv{M'}$. Hence, by Lemma \ref{lem:redp} we get $M'[N'/x]
+      \redp M^\star[N^\star/x] \equiv \left(\left(\lambda x{:}A.\
+      M\right)N\right)^\star$.
+
+    \indcase{$\Box\beta$}
+      Then we have \[
+	\letbox{u}{\ibox{M}}{N} \redp N'[M/u]
+      \] where $N \redp N'$. By the IH, $N' \redp N^\star$, so it
+      follows that \[
+	N'[M/u] \redp N^\star[M/u] \equiv \left(
+	\letbox{u}{\ibox{M}}{N}\right)^\star
+      \] by Lemma \ref{lem:substint}.
+
+    \indcase{$\Box\textsf{fix}$}
+      Then we have \[
+	\fixlob{z}{M}
+	  \redp{}
+	M'[\ibox{(\fixlob{z}{M})}/z]
+      \] where $M \redp{} M'$. By the IH, $M' \redp{} M^\star$.
+      Hence \[
+	M'[\ibox{(\fixlob{z}{M})}/z]
+	  \redp{}
+	M^\star[\ibox{(\fixlob{z}{M})}/z]
+	  \equiv
+	\left(\fixlob{z}{M}\right)^\star
+      \] by Lemma \ref{lem:substint}.
+    \indcase{$\Box\textsf{int}$}
+      Similar.
+  \end{indproof}
+\end{proof}
+

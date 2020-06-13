@@ -1,0 +1,187 @@
+\begin{align*}
+  \textbf{Ground Types} \quad &
+    G & ::=\quad &\textsf{Nat} \;|\; \textsf{Bool}
+   \\ \\
+  \textbf{Types} \quad &
+    A, B & ::=\quad &G \;|\; A \rightarrow B \;|\; \Box A
+   \\ \\
+  \textbf{Terms} \quad &
+    M, N & ::=\quad &x
+      \;|\; \lambda x{:}A.\ M
+      \;|\; M N
+      \;|\; \ibox{M}
+      \;|\; \letbox{u}{M}{N} \;| \\
+   &      &    &\widehat{n}
+      \;|\; \textsf{true}
+      \;|\; \textsf{false}
+      \;|\; \textsf{succ}
+      \;|\; \textsf{pred}
+      \;|\; \textsf{zero?}
+      \;|\; \supset_G
+      \;|\; \fixlob{z}{M}
+    \\ \\
+%  \textbf{Canonical Forms} \quad &
+%    V & ::= \quad &\widehat{n}
+%     \;|\; \textsf{true}
+%     \;|\; \textsf{false}
+%     \;|\; \lambda x{:}A.\ M
+%     \;|\; \textsf{box } M
+%   \\ \\
+  \textbf{Contexts} \quad &
+    \Gamma, \Delta & ::=\quad &\cdot \;|\; \Gamma, x: A
+\end{align*}
+
+\vfill
+
+\renewcommand{\arraystretch}{3}
+
+% TABLE FOR CONSTANTS
+\begin{tabular}{c c}
+  %% CONSTANT RULES
+  $
+    \begin{prooftree}
+      \justifies
+        \ctxt{\Delta}{\Gamma} \vdash \widehat{n} : \textsf{Nat}
+    \end{prooftree}
+  $
+  
+  &
+
+  $   
+    \begin{prooftree}
+      \justifies
+        \ctxt{\Delta}{\Gamma} \vdash b : \textsf{Bool}
+      \using
+        (b \in \{\textsf{true}, \textsf{false}\})
+    \end{prooftree}
+  $
+  
+  \\
+
+  $ 
+    \begin{prooftree}
+      \justifies
+        \ctxt{\Delta}{\Gamma} \vdash \textsf{zero?} : 
+          \textsf{Nat} \rightarrow \textsf{Bool}
+    \end{prooftree}
+  $
+  
+  &
+
+  $ 
+    \begin{prooftree}
+      \justifies
+        \ctxt{\Delta}{\Gamma}
+        \vdash f : \textsf{Nat} \rightarrow \textsf{Nat}
+      \using
+        (f \in \{\textsf{succ}, \textsf{pred}\})
+    \end{prooftree}
+  $
+  
+  \\
+
+  \multicolumn{2}{c}{
+  $
+    \begin{prooftree}
+      \justifies
+        \ctxt{\Delta}{\Gamma} \vdash {\supset_G}  : 
+        \textsf{Bool} \rightarrow G \rightarrow G \rightarrow G
+    \end{prooftree}
+  $
+  }
+
+  \\
+
+  %% VARIABLE RULES
+
+  $
+    \begin{prooftree}
+        \justifies
+          \ctxt{\Delta}{\Gamma, x{:}A, \Gamma'} \vdash x:A
+        \using
+          {(\textsf{var})}
+    \end{prooftree}
+  $
+
+  &
+
+  $
+    \begin{prooftree}
+        \justifies
+      \ctxt{\Delta, u{:} A, \Delta'}{\Gamma} \vdash u:A
+        \using
+      {(\Box\textsf{var})}
+    \end{prooftree}
+  $
+
+  \\
+
+  %% IMPLICATION RULES
+
+  $
+    \begin{prooftree}
+      \ctxt{\Delta}{\Gamma}, x{:}A \vdash M : B
+        \justifies
+      \ctxt{\Delta}{\Gamma} \vdash \lambda x{:}A. \; M : A \rightarrow B
+        \using
+      {(\rightarrow\mathcal{I})}
+    \end{prooftree}
+  $
+
+  &
+
+  $
+    \begin{prooftree}
+      \ctxt{\Delta}{\Gamma} \vdash M : A \rightarrow B
+        \quad
+      \ctxt{\Delta}{\Gamma} \vdash N : A
+        \justifies
+      \ctxt{\Delta}{\Gamma} \vdash M N : B
+        \using
+      {(\rightarrow\mathcal{E})}
+    \end{prooftree}
+  $
+
+  \\
+
+  %% BOX RULES
+
+  $
+    \begin{prooftree}
+      \ctxt{\Delta}{\cdot} \vdash M : A
+        \justifies
+      \ctxt{\Delta}{\Gamma} \vdash \ibox{M} : \Box A
+        \using
+      {(\Box\mathcal{I})}
+    \end{prooftree}
+  $
+
+  &
+
+  $
+    \begin{prooftree}
+      \ctxt{\Delta}{\Gamma} \vdash M : \Box A
+        \quad\quad
+      \ctxt{\Delta, u{:}A}{\Gamma} \vdash N : C
+        \justifies
+      \ctxt{\Delta}{\Gamma} \vdash \letbox{u}{M}{N} : C
+        \using
+      {(\Box\mathcal{E})}
+    \end{prooftree}
+  $
+
+  \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        \ctxt{\Delta}{z : \Box A} \vdash M : A
+          \justifies
+        \ctxt{\Delta}{\Gamma} \vdash \fixlob{z}{M} : \Box A
+          \using
+        {(\Box\textsf{fix})}
+      \end{prooftree}
+    $
+  }
+\end{tabular}
+

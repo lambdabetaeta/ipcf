@@ -1,0 +1,171 @@
+\renewcommand{\arraystretch}{4}
+
+\begin{tabular}{c c}
+
+%  \textbf{Equivalence Relation} & \\ \\
+%
+%  \multicolumn{2}{c}{
+%    $ \begin{prooftree}
+%        \ctxt{\Delta}{\Gamma} \vdash M : A
+%          \justifies
+%        \ctxt{\Delta}{\Gamma} \vdash M = M : A
+%      \end{prooftree} $
+%  } \\ \\
+%
+%  $ \begin{prooftree}
+%      \ctxt{\Delta}{\Gamma} \vdash M = N : A
+%        \justifies
+%      \ctxt{\Delta}{\Gamma} \vdash N = M : A
+%    \end{prooftree} $
+%  &
+%  $ \begin{prooftree}
+%      \ctxt{\Delta}{\Gamma} \vdash P = Q : A
+%        \qquad
+%      \ctxt{\Delta}{\Gamma} \vdash Q = R : A
+%        \justifies
+%      \ctxt{\Delta}{\Gamma} \vdash P = R : A
+%    \end{prooftree} $
+%
+
+  \textbf{Function Spaces} & \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        \ctxt{\Delta}{\Gamma} \vdash N : A
+          \qquad
+        \ctxt{\Delta}{\Gamma, x{:}A, \Gamma'} \vdash M : B
+          \justifies
+        \ctxt{\Delta}{\Gamma} \vdash (\lambda x{:}A. M)\,N = M[N/x] : B
+          \using
+        {(\rightarrow\beta)}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+%  $
+%    \begin{prooftree}
+%      \ctxt{\Delta}{\Gamma} \vdash M : A \rightarrow B
+%        \qquad
+%      x \not\in \text{fv}(M)
+%        \justifies
+%      \ctxt{\Delta}{\Gamma} \vdash M = \lambda x{:}A. Mx : A \rightarrow B
+%        \using
+%      {(\rightarrow\eta)}
+%    \end{prooftree}
+%  $
+
+%  $ \begin{prooftree}
+%      \ctxt{\Delta}{\Gamma, x{:}A} \vdash M = N : B
+%        \justifies
+%      \ctxt{\Delta}{\Gamma} \vdash \lambda x{:}A. M = \lambda x{:}A. N :
+%      A \rightarrow B
+%        \using
+%      {(\rightarrow\textsf{cong}_1)}
+%    \end{prooftree} $
+
+%  $ \begin{prooftree}
+%      \ctxt{\Delta}{\Gamma} \vdash M = P : A \rightarrow B
+%        \qquad
+%      \ctxt{\Delta}{\Gamma} \vdash N = Q : A
+%        \justifies
+%      \ctxt{\Delta}{\Gamma} \vdash MN = PQ : B
+%        \using
+%      {(\rightarrow\textsf{cong}_2)}
+%    \end{prooftree} $
+
+
+  \textbf{Modality} & \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        \ctxt{\Delta}{\cdot} \vdash M : A
+          \qquad
+        \ctxt{\Delta, u : A}{\Gamma} \vdash N : C
+          \justifies
+        \ctxt{\Delta}{\Gamma}
+            \vdash \letbox{u}{\ibox{M}}{N} = N[M/x] : C
+          \using
+        {(\Box\beta)}
+      \end{prooftree}
+    $
+  }
+    
+  \\
+
+%  \multicolumn{2}{c}{
+%  $ \begin{prooftree}
+%      \ctxt{\Delta}{\Gamma} \vdash M : \Box A
+%        \justifies
+%      \ctxt{\Delta}{\Gamma} \vdash \letbox{u}{M}{\ibox{u}} = M : \Box A
+%        \using
+%      {(\Box\eta)}
+%    \end{prooftree} $
+%  }
+%
+%  \\
+
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        \ctxt{\Delta}{z : \Box A} \vdash M : A
+          \justifies
+        \ctxt{\Delta}{\Gamma} \vdash 
+            \fixlob{z}{M} = M[\ibox{(\fixlob{z}{M})}/z] : A
+          \using
+          {(\Box\textsf{fix})}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        \ctxt{\cdot}{\cdot} \vdash M : A
+          \quad
+        f \in \mathcal{F}(A, B)
+          \justifies
+        \ctxt{\Delta}{\Gamma} \vdash 
+            \tilde f (\ibox{M}) = \ibox{f(M)} : \Box B
+          \using
+        {(\Box\textsf{int})}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        \ctxt{\Delta}{\Gamma} \vdash M = N : \Box A
+          \qquad
+        \ctxt{\Delta}{\Gamma} \vdash P = Q : C
+          \justifies
+        \ctxt{\Delta}{\Gamma} \vdash
+            \letbox{u}{M}{P} = \letbox{u}{N}{Q} : B
+          \using
+        {(\Box\textsf{let-cong})}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+  \multicolumn{2}{c}{
+    \begin{minipage}{\textwidth}
+      \textbf{Remark}. In addition to the above, one should also
+      include (a) rules that ensure that equality is an equivalence
+      relation, (b) congruence rules for $\lambda$-abstraction and
+      application, and (c) rules corresponding to the behaviour of
+      constants, as in Figure \ref{fig:ipcfbeta}. 
+    \end{minipage}
+  }
+
+\end{tabular}

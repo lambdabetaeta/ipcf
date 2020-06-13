@@ -1,0 +1,189 @@
+\renewcommand{\arraystretch}{4}
+
+\begin{center}
+\begin{tabular}{c c}
+  %% BETA
+  $
+    \begin{prooftree}
+        \justifies
+      (\lambda x : A.\ M)N \red{} M[N/x]
+        \using
+      {(\red{}\beta)}
+    \end{prooftree}
+  $
+
+  &
+
+  $
+    \begin{prooftree}
+      M \red{} N
+        \justifies
+    \lambda x : A.\ M \red{} \lambda x : A.\ N
+        \using
+      {(\textsf{cong}_\lambda)}
+    \end{prooftree}
+  $
+
+  \\
+
+  %% APPLICATION CONGRUENCE
+
+  $
+    \begin{prooftree}
+      M \red{} N
+        \justifies
+      MP \red{} NP
+        \using
+      {(\textsf{app}_1)}
+    \end{prooftree}
+  $
+
+  &
+
+  $
+    \begin{prooftree}
+      P \red{} Q
+        \justifies
+      MP \red{} MQ
+        \using
+      {(\textsf{app}_2)}
+    \end{prooftree}
+  $
+
+  \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+          \justifies
+        \letbox{u}{\ibox{M}}{N} \red{} N[M/u]
+          \using
+        {(\Box\beta)}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+          \justifies
+        \fixlob{z}{M} \red{} M[\ibox{(\fixlob{z}{M})}/z]
+          \using
+        {(\Box\textsf{fix})}
+      \end{prooftree}
+    $
+  }
+  
+  \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        \text{$M$ closed, $M \in \textrm{dom}(f)$}
+          \justifies
+        \tilde f(\ibox{M}) \red{} \ibox{f(M)}
+          \using
+        {(\Box\textsf{int})}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+  %% LET BOX CONGRUENCE
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        M \red{} N
+          \justifies
+        \letbox{u}{M}{P} \red{} \letbox{u}{N}{P}
+          \using
+        {(\textsf{let-cong}_1)}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        P \red{} Q
+          \justifies
+        \letbox{u}{M}{P} \red{} \letbox{u}{M}{Q}
+          \using
+        {(\textsf{let-cong}_2)}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+  $ 
+    \begin{prooftree}
+        \justifies
+      \textsf{zero?}\ \widehat{0} \red{} \textsf{true}
+        \using
+      {(\textsf{zero?}_1)}
+    \end{prooftree}
+  $
+
+  & 
+
+  $
+    \begin{prooftree}
+        \justifies
+      \textsf{zero?}\ \widehat{n+1} \red{} \textsf{false}
+        \using
+      {(\textsf{zero?}_2)}
+    \end{prooftree}
+  $
+
+  \\
+
+  $
+    \begin{prooftree}
+        \justifies
+      \textsf{succ}\ \widehat{n} \red{} \widehat{n+1}
+        \using
+      {(\textsf{succ})}
+    \end{prooftree}
+  $
+
+  & 
+
+  $
+    \begin{prooftree}
+        \justifies
+      \textsf{pred}\ \widehat{n} \red{} \widehat{n\dotdiv 1}
+        \using
+      {(\textsf{pred})}
+    \end{prooftree}
+  $
+
+  \\
+
+  $
+    \begin{prooftree}
+        \justifies
+      \supset_G\ \textsf{true}\ M\ N \red{} M
+        \using
+      {(\supset_1)}
+    \end{prooftree}
+  $
+
+  & 
+
+  $
+    \begin{prooftree}
+        \justifies
+      \supset_G\ \textsf{false}\ M\ N \red{} N
+        \using
+      {(\supset_2)}
+    \end{prooftree}
+  $
+\end{tabular}
+\end{center}

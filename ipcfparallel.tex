@@ -1,0 +1,148 @@
+\renewcommand{\arraystretch}{3}
+
+\begin{center}
+\begin{tabular}{c c}
+
+  %% BETA
+
+  $
+    \begin{prooftree}
+        \justifies
+      M \redp{}M
+        \using
+      {(\textsf{refl})}
+    \end{prooftree}
+  $
+
+  &
+
+  $
+    \begin{prooftree}
+      M \redp{}N
+        \quad\quad
+      P \redp{}Q
+        \justifies
+      (\lambda x : A.\ M)P \redp{}N[Q/x]
+        \using
+      {(\rightarrow\beta)}
+    \end{prooftree}
+  $
+
+  \\
+
+  $
+    \begin{prooftree}
+      M \redp{}N
+        \justifies
+      \lambda x : A.\ M \redp{}\lambda x : A.\ N
+        \using
+      {(\textsf{cong}_\lambda)}
+    \end{prooftree}
+  $
+
+  &
+
+  $
+    \begin{prooftree}
+      M \redp{}N
+        \quad\quad
+      P \redp{}Q
+        \justifies
+      MP \redp{}NQ
+        \using
+      {(\textsf{app})}
+    \end{prooftree}
+  $
+
+  \\
+
+  $
+    \begin{prooftree}
+      P \redp{} P'
+        \justifies
+      \supset_G\ \textsf{true}\ P\ Q \redp{} P'
+        \using
+      {(\supset_1)}
+    \end{prooftree}
+  $
+
+  & 
+
+  $
+    \begin{prooftree}
+      Q \redp{} Q'
+        \justifies
+      \supset_G\ \textsf{false}\ P\ Q \redp{} Q'
+        \using
+      {(\supset_2)}
+    \end{prooftree}
+  $
+
+  \\
+
+  \multicolumn{2}{c}{
+    $ \begin{prooftree}
+      M \redp{} N
+        \justifies
+      \letbox{u}{\ibox{P}}{M} \redp{} N[P/u]
+        \using
+      {(\Box\beta)}
+    \end{prooftree} $
+  }
+
+  \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+	M \redp{} N
+          \justifies
+        \fixlob{z}{M} \redp{} N[\ibox{(\fixlob{z}{M})}/z]
+          \using
+        {(\Box\textsf{fix})}
+      \end{prooftree}
+    $
+  }
+
+  \\ 
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        \text{$M$ closed, $M \in \textrm{dom}(f)$}
+          \justifies
+        \tilde f(\ibox{M}) \redp{}\ibox{f(M)}	
+          \using
+        {(\Box\textsf{int})}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+  \multicolumn{2}{c}{
+    $
+      \begin{prooftree}
+        M \redp{}N
+          \quad\quad
+        P \redp{}Q
+          \justifies
+        \letbox{u}{M}{P} \redp{} \letbox{u}{N}{Q}
+          \using
+        {(\Box\textsf{let-cong})}
+      \end{prooftree}
+    $
+  }
+
+  \\
+
+  \multicolumn{2}{c}{
+    \begin{minipage}{\textwidth}
+      \textbf{Remark}. In addition to the above, one should also
+      include rules for the constants, but these are merely
+      restatements of the rules in Figure \ref{fig:ipcfbeta}.
+    \end{minipage}
+  }
+
+\end{tabular}
+\end{center}
