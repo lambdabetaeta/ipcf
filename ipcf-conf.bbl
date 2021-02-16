@@ -1,220 +1,248 @@
 \begin{thebibliography}{10}
-\expandafter\ifx\csname url\endcsname\relax
-  \def\url#1{\texttt{#1}}\fi
-\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
-\newcommand{\enquote}[1]{``#1''}
 
 \bibitem{Abramsky2014}
-Abramsky, S., \emph{{Intensionality, Definability and Computation}}, in:
-  A.~Baltag and S.~Smets, editors, \emph{Johan van Benthem on Logic and
-  Information Dynamics}, Springer-Verlag, 2014 pp. 121--142.
-\newline\urlprefix\url{https://dx.doi.org/10.1007/978-3-319-06025-5_5}
+Samson Abramsky.
+\newblock {Intensionality, Definability and Computation}.
+\newblock In Alexandru Baltag and Sonja Smets, editors, {\em Johan van Benthem
+  on Logic and Information Dynamics}, pages 121--142. Springer-Verlag, 2014.
 
 \bibitem{Adleman1990}
-Adleman, L.~M., \emph{{An Abstract Theory of Computer Viruses}}, in:
-  \emph{Advances in Cryptology - CRYPTO' 88},  Lecture Notes in Computer
-  Science  \textbf{403}, Springer New York, New York, NY, 1990 pp. 354--374.
-\newline\urlprefix\url{https://dx.doi.org/10.1007/0-387-34799-2_28}
+Leonard~M. Adleman.
+\newblock {An Abstract Theory of Computer Viruses}.
+\newblock In {\em Advances in Cryptology - CRYPTO' 88}, volume 403 of {\em
+  Lecture Notes in Computer Science}, pages 354--374. Springer New York, New
+  York, NY, 1990.
 
 \bibitem{Barber1996}
-Barber, A.~G., \emph{{Dual Intuitionistic Linear Logic}}, Technical report,
-  ECS-LFCS-96-347, Laboratory for Foundations of Computer Science, University
-  of Edinburgh (1996).
-\newline\urlprefix\url{http://www.lfcs.inf.ed.ac.uk/reports/96/ECS-LFCS-96-347/}
+Andrew~Graham Barber.
+\newblock {Dual Intuitionistic Linear Logic}.
+\newblock Technical report, ECS-LFCS-96-347, Laboratory for Foundations of
+  Computer Science, University of Edinburgh, 1996.
 
 \bibitem{Barendregt1984}
-Barendregt, H., \enquote{{Lambda Calculus: Its Syntax and Semantics},}
-  North-Holland, Amsterdam, 1984.
+Henk Barendregt.
+\newblock {\em {Lambda Calculus: Its Syntax and Semantics}}.
+\newblock North-Holland, Amsterdam, 1984.
 
 \bibitem{Bawden1999}
-Bawden, A., \emph{{Quasiquotation in LISP}}, in: \emph{Proceedings of the 6th
-  ACM SIGPLAN Workshop on Partial Evaluation and Semantics-Based Program
-  Manipulation (PEPM '99)}, 1999.
-\newline\urlprefix\url{http://repository.readscheme.org/ftp/papers/pepm99/bawden.pdf}
+Alan Bawden.
+\newblock {Quasiquotation in LISP}.
+\newblock In {\em Proceedings of the 6th ACM SIGPLAN Workshop on Partial
+  Evaluation and Semantics-Based Program Manipulation (PEPM '99)}, 1999.
 
 \bibitem{Birkedal2012}
-Birkedal, L., R.~M{\o}gelberg, J.~Schwinghammer and K.~St{\o}vring,
-  \emph{{First steps in synthetic guarded domain theory: step-indexing in the
-  topos of trees}}, Logical Methods in Computer Science \textbf{8} (2012).
+Lars Birkedal, Rasmus M{\o}gelberg, Jan Schwinghammer, and Kristian
+  St{\o}vring.
+\newblock {First steps in synthetic guarded domain theory: step-indexing in the
+  topos of trees}.
+\newblock {\em Logical Methods in Computer Science}, 8(4):1--45, oct 2012.
 
 \bibitem{Boolos1994}
-Boolos, G., \emph{{G\"{o}del's Second Incompleteness Theorem Explained in Words
-  of One Syllable}}, Mind \textbf{103} (1994), pp.~1--3.
+George~S. Boolos.
+\newblock {\em {The Logic of Provability}}.
+\newblock Cambridge University Press, Cambridge, 1994.
 
 \bibitem{Danvy1988}
-Danvy, O. and K.~Malmkjaer, \emph{{Intensions and extensions in a reflective
-  tower}}, in: \emph{Proceedings of the 1988 ACM conference on LISP and
-  functional programming (LFP '88)} (1988), pp. 327--341.
-\newline\urlprefix\url{https://dx.doi.org/10.1145/62678.62725}
+Olivier Danvy and Karoline Malmkjaer.
+\newblock {Intensions and extensions in a reflective tower}.
+\newblock In {\em Proceedings of the 1988 ACM conference on LISP and functional
+  programming (LFP '88)}, pages 327--341, New York, New York, USA, 1988. ACM
+  Press.
 
 \bibitem{Davies2001a}
-Davies, R. and F.~Pfenning, \emph{{A modal analysis of staged computation}},
-  Journal of the ACM \textbf{48} (2001), pp.~555--604.
+Rowan Davies and Frank Pfenning.
+\newblock {A modal analysis of staged computation}.
+\newblock {\em Journal of the ACM}, 48(3):555--604, 2001.
 
 \bibitem{Friedman1984}
-Friedman, D.~P. and M.~Wand, \emph{{Reification: Reflection without
-  metaphysics}}, in: \emph{Proceedings of the 1984 ACM Symposium on LISP and
-  functional programming (LFP '84)} (1984), pp. 348--355.
-\newline\urlprefix\url{https://dx.doi.org/10.1145/800055.802051}
+Daniel~P. Friedman and Mitchell Wand.
+\newblock {Reification: Reflection without metaphysics}.
+\newblock In {\em Proceedings of the 1984 ACM Symposium on LISP and functional
+  programming (LFP '84)}, pages 348--355, New York, New York, USA, 1984. ACM
+  Press.
 
 \bibitem{Gabbay2013}
-Gabbay, M.~J. and A.~Nanevski, \emph{{Denotation of contextual modal type
-  theory (CMTT): Syntax and meta-programming}}, Journal of Applied Logic
-  \textbf{11} (2013), pp.~1--29.
-\newline\urlprefix\url{http://dx.doi.org/10.1016/j.jal.2012.07.002}
+Murdoch~J. Gabbay and Aleksandar Nanevski.
+\newblock {Denotation of contextual modal type theory (CMTT): Syntax and
+  meta-programming}.
+\newblock {\em Journal of Applied Logic}, 11(1):1--29, mar 2013.
 
 \bibitem{Graham1993}
-Graham, P., \enquote{{On LISP: Advanced Techniques for Common LISP},} Prentice
-  Hall, 1993, 413 pp.
+Paul Graham.
+\newblock {\em {On LISP: Advanced Techniques for Common LISP}}.
+\newblock Prentice Hall, 1993.
 
 \bibitem{Gunter1992}
-Gunter, C.~A., \enquote{{Semantics of Programming Languages: Structures and
-  Techniques},} Foundations of Computing, The MIT Press, 1992.
+Carl~A. Gunter.
+\newblock {\em {Semantics of programming languages: structures and
+  techniques}}.
+\newblock Foundations of Computing. The MIT Press, 1992.
 
 \bibitem{Hansen1989}
-Hansen, T.~A., T.~Nikolajsen, J.~L. Tr{\"{a}}ff and N.~D. Jones,
-  \emph{{Experiments with Implementations of Two Theoretical Constructions}},
-  in: \emph{Proceedings of the Symposium on Logical Foundations of Computer
-  Science: Logic at Botik '89} (1989), pp. 119--133.
-\newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=646798.759646}
+Torben~Amtoft Hansen, Thomas Nikolajsen, Jesper~Larsson Tr{\"{a}}ff, and
+  Neil~D. Jones.
+\newblock {Experiments with Implementations of Two Theoretical Constructions}.
+\newblock In {\em Proceedings of the Symposium on Logical Foundations of
+  Computer Science: Logic at Botik '89}, pages 119--133, London, UK, 1989.
+  Springer-Verlag.
 
 \bibitem{Jones1992}
-Jones, N.~D., \emph{{Computer Implementation and Applications of Kleene's S-M-N
-  and Recursion Theorems}}, in: Y.~N. Moschovakis, editor, \emph{Logic from
-  Computer Science: Proceedings of a Workshop Held November 13-17, 1989 [at
-  MSRI]},  Mathematical Sciences Research Institute Publications  \textbf{21},
-  Springer New York, 1992 pp. 243--263.
-\newline\urlprefix\url{https://dx.doi.org/10.1007/978-1-4612-2822-6_9}
+Neil~D. Jones.
+\newblock {Computer Implementation and Applications of Kleene's S-M-N and
+  Recursion Theorems}.
+\newblock In Yiannis~N Moschovakis, editor, {\em Logic from Computer Science:
+  Proceedings of a Workshop Held November 13-17, 1989 [at MSRI]}, volume~21 of
+  {\em Mathematical Sciences Research Institute Publications}, pages 243--263.
+  Springer New York, 1992.
 
 \bibitem{Jones1996}
-Jones, N.~D., \emph{{An introduction to partial evaluation}}, ACM Computing
-  Surveys \textbf{28} (1996), pp.~480--503.
-\newline\urlprefix\url{http://doi.acm.org/10.1145/243439.243447}
+Neil~D. Jones.
+\newblock {An introduction to partial evaluation}.
+\newblock {\em ACM Computing Surveys}, 28(3):480--503, 1996.
 
 \bibitem{Jones1997}
-Jones, N.~D., \enquote{{Computability and Complexity: From a Programming
-  Perspective},} Foundations of Computing, MIT Press, 1997.
+Neil~D. Jones.
+\newblock {\em {Computability and Complexity: From a Programming Perspective}}.
+\newblock Foundations of Computing. MIT Press, 1997.
 
 \bibitem{Jones2013}
-Jones, N.~D., \emph{{A Swiss Pocket Knife for Computability}}, Electronic
-  Proceedings in Theoretical Computer Science \textbf{129} (2013), pp.~1--17.
-\newline\urlprefix\url{http://arxiv.org/abs/1309.5128v1}
+Neil~D. Jones.
+\newblock {A Swiss Pocket Knife for Computability}.
+\newblock {\em Electronic Proceedings in Theoretical Computer Science},
+  129:1--17, sep 2013.
 
 \bibitem{Jones1993}
-Jones, N.~D., C.~K. Gomard and P.~Sestoft, \enquote{{Partial Evaluation and
-  Automatic Program Generation},} Prentice Hall International, 1993, 425 pp.
+Neil~D. Jones, Carsten~K. Gomard, and Peter Sestoft.
+\newblock {\em {Partial Evaluation and Automatic Program Generation}}.
+\newblock Prentice Hall International, 1993.
 
 \bibitem{Kavvos2016b}
-Kavvos, G.~A., \emph{{The Many Worlds of Modal Lambda Calculi: I. Curry-Howard
-  for Necessity, Possibility and Time}}, CoRR  (2016).
+G.~A. Kavvos.
+\newblock {The Many Worlds of Modal $\lambda$-calculi: I. Curry-Howard for
+  Necessity, Possibility and Time}.
+\newblock {\em CoRR}, 2016.
 
 \bibitem{Kavvos2017b}
-Kavvos, G.~A., \emph{{Dual-context calculi for modal logic}}, in: \emph{2017
-  32nd Annual ACM/IEEE Symposium on Logic in Computer Science (LICS)} (2017).
+G.~A. Kavvos.
+\newblock {Dual-context calculi for modal logic}.
+\newblock In {\em 2017 32nd Annual ACM/IEEE Symposium on Logic in Computer
+  Science (LICS)}. IEEE, 2017.
 
 \bibitem{Kavvos2017a}
-Kavvos, G.~A., \emph{{On the Semantics of Intensionality}}, in: J.~Esparza and
-  A.~S. Murawski, editors, \emph{Proceedings of the 20th International
-  Conference on Foundations of Software Science and Computation Structures
-  (FoSSaCS)},  Lecture Notes in Computer Science  \textbf{10203} (2017), pp.
-  550--566.
+G.~A. Kavvos.
+\newblock {On the Semantics of Intensionality}.
+\newblock In Javier Esparza and Andrzej~S. Murawski, editors, {\em Proceedings
+  of the 20th International Conference on Foundations of Software Science and
+  Computation Structures (FoSSaCS)}, volume 10203 of {\em Lecture Notes in
+  Computer Science}, pages 550--566. Springer-Verlag Berlin Heidelberg, 2017.
 
 \bibitem{Kavvos2017}
-Kavvos, G.~A., \enquote{{On the Semantics of Intensionality and Intensional
-  Recursion},} Dphil thesis, University of Oxford (2017).
-\newline\urlprefix\url{https://ora.ox.ac.uk/objects/uuid:f89b46d8-b514-42fd-9321-e2803452681f}
+Georgios~Alexandros Kavvos.
+\newblock {\em On the {Semantics} of {Intensionality} and {Intensional}
+  {Recursion}}.
+\newblock {DPhil} thesis, University of Oxford, 2017.
 
 \bibitem{Kleene1938}
-Kleene, S.~C., \emph{{On notation for ordinal numbers}}, The Journal of
-  Symbolic Logic \textbf{3} (1938), pp.~150--155.
-\newline\urlprefix\url{https://dx.doi.org/10.2307/2267778}
+Stephen~C. Kleene.
+\newblock {On notation for ordinal numbers}.
+\newblock {\em The Journal of Symbolic Logic}, 3(04):150--155, 1938.
 
 \bibitem{Litak2014}
-Litak, T., \emph{{Constructive Modalities with Provability Smack}}, in:
-  G.~Bezhanishvili, editor, \emph{Leo Esakia on Duality in Modal and
-  Intuitionistic Logics},  Outstanding Contributions to Logic  \textbf{4},
-  Springer, Dordrecht, 2014 pp. 187--216.
-\newline\urlprefix\url{https://arxiv.org/pdf/1708.05607.pdf}
+Tadeusz Litak.
+\newblock {Constructive Modalities with Provability Smack}.
+\newblock In Guram Bezhanishvili, editor, {\em Leo Esakia on duality in modal
+  and intuitionistic logics}, pages 179--208. Springer, 2014.
 
 \bibitem{Longley2015}
-Longley, J.~R. and D.~Normann, \enquote{{Higher-Order Computability},} Theory
-  and Applications of Computability, Springer Berlin Heidelberg, Berlin,
-  Heidelberg, 2015.
-\newline\urlprefix\url{https://dx.doi.org/10.1007/978-3-662-47992-6}
+John~R. Longley and Dag Normann.
+\newblock {\em {Higher-Order Computability}}.
+\newblock Theory and Applications of Computability. Springer Berlin Heidelberg,
+  Berlin, Heidelberg, 2015.
 
 \bibitem{Mitchell1996}
-Mitchell, J.~C., \enquote{{Foundations for programming languages},} Foundations
-  of Computing, The MIT Press, 1996.
+John~C. Mitchell.
+\newblock {\em {Foundations for programming languages}}.
+\newblock Foundations of Computing. The MIT Press, 1996.
 
 \bibitem{Nakano2000}
-Nakano, H., \emph{{A modality for recursion}}, Proceedings Fifteenth Annual
-  IEEE Symposium on Logic in Computer Science (Cat. No.99CB36332)  (2000).
+Hiroshi Nakano.
+\newblock {A modality for recursion}.
+\newblock {\em Proceedings Fifteenth Annual IEEE Symposium on Logic in Computer
+  Science (Cat. No.99CB36332)}, 2000.
 
 \bibitem{Nanevski2002}
-Nanevski, A., \emph{{Meta-programming with names and necessity}}, ACM SIGPLAN
-  Notices \textbf{37} (2002), pp.~206--217.
+Aleksandar Nanevski.
+\newblock {Meta-programming with names and necessity}.
+\newblock {\em ACM SIGPLAN Notices}, 37:206--217, 2002.
 
 \bibitem{Nanevski2005}
-Nanevski, A. and F.~Pfenning, \emph{{Staged computation with names and
-  necessity}}, Journal of Functional Programming \textbf{15} (2005), p.~893.
+Aleksandar Nanevski and Frank Pfenning.
+\newblock {Staged computation with names and necessity}.
+\newblock {\em Journal of Functional Programming}, 15(06):893, 2005.
 
 \bibitem{Davies2001}
-Pfenning, F. and R.~Davies, \emph{{A judgmental reconstruction of modal
-  logic}}, Mathematical Structures in Computer Science \textbf{11} (2001),
-  pp.~511--540.
+Frank Pfenning and Rowan Davies.
+\newblock {A judgmental reconstruction of modal logic}.
+\newblock {\em Mathematical Structures in Computer Science}, 11(4):511--540,
+  2001.
 
 \bibitem{Plotkin1977}
-Plotkin, G.~D., \emph{{LCF considered as a programming language}}, Theoretical
-  Computer Science \textbf{5} (1977), pp.~223--255.
+Gordon~D. Plotkin.
+\newblock {LCF considered as a programming language}.
+\newblock {\em Theoretical Computer Science}, 5(3):223--255, 1977.
 
 \bibitem{Schurmann2001}
-Sch{\"{u}}rmann, C., J.~Despeyroux and F.~Pfenning, \emph{{Primitive recursion
-  for higher-order abstract syntax}}, Theoretical Computer Science \textbf{266}
-  (2001), pp.~1--57.
+Carsten Sch{\"{u}}rmann, Jo{\"{e}}lle Despeyroux, and Frank Pfenning.
+\newblock {Primitive recursion for higher-order abstract syntax}.
+\newblock {\em Theoretical Computer Science}, 266(1-2):1--57, 2001.
 
 \bibitem{Scott1993}
-Scott, D.~S., \emph{{A type-theoretical alternative to ISWIM, CUCH, OWHY}},
-  Theoretical Computer Science \textbf{121} (1993), pp.~411--440.
+Dana~S. Scott.
+\newblock {A type-theoretical alternative to ISWIM, CUCH, OWHY}.
+\newblock {\em Theoretical Computer Science}, 121(1-2):411--440, 1993.
 
 \bibitem{Smith1984}
-Smith, B.~C., \emph{{Reflection and Semantics in LISP}}, in: \emph{Proceedings
-  of the 11th ACM SIGACT-SIGPLAN Symposium on Principles of Programming
-  Languages (POPL '84)} (1984), pp. 23--35.
-\newline\urlprefix\url{https://dx.doi.org/10.1145/800017.800513}
+Brian~Cantwell Smith.
+\newblock {Reflection and Semantics in LISP}.
+\newblock In {\em Proceedings of the 11th ACM SIGACT-SIGPLAN Symposium on
+  Principles of Programming Languages (POPL '84)}, pages 23--35, New York, New
+  York, USA, 1984. ACM Press.
 
 \bibitem{Streicher2006}
-Streicher, T., \enquote{{Domain-theoretic Foundations of Functional
-  Programming},} World Scientific, 2006.
+Thomas Streicher.
+\newblock {\em {Domain-theoretic Foundations of Functional Programming}}.
+\newblock World Scientific, 2006.
 
 \bibitem{Taha2000}
-Taha, W. and T.~Sheard, \emph{{MetaML and multi-stage programming with explicit
-  annotations}}, Theoretical Computer Science \textbf{248} (2000),
-  pp.~211--242.
-\newline\urlprefix\url{https://dx.doi.org/10.1016/S0304-3975(00)00053-0}
+Walid Taha and Tim Sheard.
+\newblock {MetaML and multi-stage programming with explicit annotations}.
+\newblock {\em Theoretical Computer Science}, 248(1-2):211--242, 2000.
 
 \bibitem{Takahashi1995}
-Takahashi, M., \emph{{Parallel Reductions in $\lambda$-Calculus}}, Information
-  and Computation \textbf{118} (1995), pp.~120--127.
+M.~Takahashi.
+\newblock {Parallel Reductions in $\lambda$-Calculus}.
+\newblock {\em Information and Computation}, 118(1):120--127, apr 1995.
 
 \bibitem{Tsukada2010}
-Tsukada, T. and A.~Igarashi, \emph{{A logical foundation for environment
-  classifiers}}, Logical Methods in Computer Science \textbf{6} (2010),
-  pp.~1--43.
+Takeshi Tsukada and Atsushi Igarashi.
+\newblock {A logical foundation for environment classifiers}.
+\newblock {\em Logical Methods in Computer Science}, 6(4):1--43, 2010.
 
 \bibitem{Ursini1979a}
-Ursini, A., \emph{{A modal calculus analogous to K4W, based on intuitionistic
-  propositional logic}}, Studia Logica \textbf{38} (1979), pp.~297--311.
-\newline\urlprefix\url{https://dx.doi.org/10.1007/BF00405387}
+Aldo Ursini.
+\newblock {A modal calculus analogous to K4W, based on intuitionistic
+  propositional logic}.
+\newblock {\em Studia Logica}, 38(3):297--311, 1979.
 
 \bibitem{Wand1998}
-Wand, M., \emph{{The Theory of Fexprs is Trivial}}, LISP and Symbolic
-  Computation \textbf{10} (1998), pp.~189--199.
-\newline\urlprefix\url{https://dx.doi.org/10.1023/A:1007720632734}
+Mitchell Wand.
+\newblock {The Theory of Fexprs is Trivial}.
+\newblock {\em LISP and Symbolic Computation}, 10(3):189--199, 1998.
 
 \bibitem{Wand1988}
-Wand, M. and D.~P. Friedman, \emph{{The mystery of the tower revealed: A
-  nonreflective description of the reflective tower}}, Lisp and Symbolic
-  Computation \textbf{1} (1988), pp.~11--38.
-\newline\urlprefix\url{https://dx.doi.org/10.1007/BF01806174}
+Mitchell Wand and Daniel~P. Friedman.
+\newblock {The mystery of the tower revealed: A nonreflective description of
+  the reflective tower}.
+\newblock {\em Lisp and Symbolic Computation}, 1(1):11--38, jun 1988.
 
 \end{thebibliography}

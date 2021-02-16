@@ -1,27 +1,26 @@
-\documentclass[11pt]{entcs}
+\documentclass{myifcolog}
 
-\usepackage{entcs-kavvos}
-\usepackage{graphicx}
-\sloppy
+% \usepackage{graphicx}
 
 \usepackage[ipcf]{optional}
 \usepackage{amsmath}
 \usepackage{amssymb}
-%\usepackage{amsthm}
+\usepackage{amsthm}
 \usepackage{mathtools}
-\usepackage{multicol}
 \usepackage{stmaryrd}
 \usepackage{prooftree}
 \usepackage{enumitem}
+\usepackage{multicol}
 \usepackage{framed}
 \usepackage{tikz-cd}
 
-%\newtheorem{lem}{Lemma}
-%\newtheorem{cor}{Corollary}
-%\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}{Proposition}
 
-%\theoremstyle{definition}
-%\newtheorem{defn}{Definition}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
 
 \newcommand{\sem}[2]{\left\llbracket #1 \right\rrbracket^{#2}}
 \newcommand{\defeq}{\stackrel{\mathclap{\mbox{\tiny def}}}{=}}
@@ -38,10 +37,10 @@
 \newcommand{\redt}{\mathrel{\longrightarrow^\ast}}
 
 % Macros for free variables
-\newcommand{\fv}[1]{\textsc{fv}\left(#1\right)}
-\newcommand{\ufv}[1]{\textsc{fv}_0\left(#1\right)}
-\newcommand{\bfv}[1]{\textsc{fv}_{\geq 1}\left(#1\right)}
-\newcommand{\vars}[1]{\textsc{Vars}\left(#1\right)}
+\newcommand{\fv}[1]{\mathsf{fv}\left(#1\right)}
+\newcommand{\ufv}[1]{\mathsf{fv}_0\left(#1\right)}
+\newcommand{\bfv}[1]{\mathsf{fv}_{\geq 1}\left(#1\right)}
+\newcommand{\vars}[1]{\mathsf{Vars}\left(#1\right)}
 
 % Macro for inductive proof
 \newlist{indproof}{itemize}{5}
@@ -62,27 +61,26 @@
 }
 \makeatother
 
-\def\lastname{Kavvos}
-
-\begin{document}
-
-\begin{frontmatter}
 
 \title{Intensionality, Intensional Recursion, \\
   and the G\"odel-L\"ob axiom}
 
-\thanks[myemail]{This is a revised version of the third chapter of
+\titlerunning{Intensionality, Intensional Recursion, and the G\"odel-L\"ob axiom}
+
+\titlethanks{This is a revised version of the third chapter of
   \cite{Kavvos2017}, which is in turn based on a paper presented at
   the 7th Workshop on Intuitionistic Modal Logic and Applications
-  (IMLA 2017). Email: \href{mailto:g.a.kavvos@gmail.com}
-  {\texttt{\normalshape g.a.kavvos@gmail.com}}. Current
-  affiliation: Department of Computer Science, Aarhus University.}
+  (IMLA 2017).}
 
-\author{G. A. Kavvos}
+\addauthor[]{G. A. Kavvos}
+  {Department of Computer Science, University of Oxford \\
+  Wolfson Building, Parks Road, Oxford OX1 3QD, United Kingdom}
 
-\address{Department of Computer Science \\
-  University of Oxford\\
-  Oxford, United Kingdom}
+\authorrunning{G. A. Kavvos}
+
+\begin{document}
+
+\maketitle
 
 \begin{abstract}
   The use of a necessity modality in a typed $\lambda$-calculus
@@ -101,15 +99,15 @@
   Theorem.
 \end{abstract}
 
-\begin{keyword}
-  G\"odel-L\"ob axiom, constructive provability logic, intensionality,
-  intensional recursion, modal type theory, modalities in
-  programming, modal logic, second recursion theorem
-\end{keyword}
+% \begin{keyword}
+%   G\"odel-L\"ob axiom, constructive provability logic, intensionality,
+%   intensional recursion, modal type theory, modalities in
+%   programming, modal logic, second recursion theorem
+% \end{keyword}
 
-\end{frontmatter}
+% \end{frontmatter}
 
-%%% ARTICLE BEGINS HERE
+% ARTICLE BEGINS HERE
 
 \section{Introduction}
 
@@ -370,9 +368,7 @@ constructive modalities with a provability-like flavour.
 \begin{figure}
   \caption{Syntax and Typing Rules for Intensional PCF}
   \label{fig:ipcf}
-  \begin{framed}
     \input{ipcfdefn}
-  \end{framed}
 \end{figure}
 
 \section{Metatheory}
@@ -398,7 +394,6 @@ write $\vdash M : A$ whenever $\ctxt{\cdot}{\cdot} \vdash M : A$.
 \begin{thm}[Structural \& Cut]
   \label{thm:scut}
   The following rules are admissible in iPCF:
-  \begin{multicols}{2}
   \begin{enumerate}
     \item (Weakening) \[
       \begin{prooftree}
@@ -431,7 +426,6 @@ write $\vdash M : A$ whenever $\ctxt{\cdot}{\cdot} \vdash M : A$.
       \end{prooftree}
     \]
   \end{enumerate}
-  \end{multicols}
 \end{thm}
 
 \opt{th}{
@@ -445,7 +439,6 @@ write $\vdash M : A$ whenever $\ctxt{\cdot}{\cdot} \vdash M : A$.
 \begin{thm}[Modal Structural \& Cut]
   \label{thm:modalstruct}
   The following rules are admissible:
-  \begin{multicols}{2}
   \begin{enumerate}
     \item (Modal Weakening) \[
       \begin{prooftree}
@@ -478,7 +471,6 @@ write $\vdash M : A$ whenever $\ctxt{\cdot}{\cdot} \vdash M : A$.
       \end{prooftree}
     \]
   \end{enumerate}
-  \end{multicols}
 \end{thm}
 
 \subsection{Free variables}
@@ -596,8 +588,8 @@ A similar task was also recently taken up by Gabbay and Nanevski
 \cite{Gabbay2013}, who attempted to add a construct
 $\textsf{is-app}$ to the system of Davies and Pfenning, along with
 the reduction rules \begin{align*}
-  \textsf{is-app}\ (\ibox{PQ}) &\red{} \textsf{true} \\
-  \textsf{is-app}\ (\ibox{M})  &\red{} \textsf{false}
+  \textsf{is-app}\ (\ibox{PQ}) &\red{} \mathsf{true} \\
+  \textsf{is-app}\ (\ibox{M})  &\red{} \mathsf{false}
     \qquad \text{if $M$ is not of the form $PQ$}
 \end{align*} The function computed by $\textsf{is-app}$ is truly
 intensional, as it depends solely on the syntactic structure of
@@ -616,7 +608,7 @@ believe that their proof of soundness is wrong: it is not hard to
 see that their semantics is not stable under the second of these
 two reductions: take $M$ to be $u$, and let the semantic
 environment map $u$ to an application $PQ$, and then notice that
-this leads to $\sem{\textsf{true}}{} = \sem{\textsf{false}}{}$. We
+this leads to $\sem{\mathsf{true}}{} = \sem{\mathsf{false}}{}$. We
 can also see this in the fact that their notion of reduction is
 \emph{not confluent}. Here is the relevant counterexample: we can
 reduce like this: \[
@@ -624,13 +616,13 @@ reduce like this: \[
     \red{}
   \textsf{is-app}\ (\ibox{PQ})
     \red{}
-  \textsf{true}
+  \mathsf{true}
 \] But we could have also reduced like that: \[
   \letbox{u}{\ibox{(PQ)}}{\textsf{is-app}\ (\ibox{u})}
     \red{}
-  \letbox{u}{\ibox{(PQ)}}{\textsf{false}}
+  \letbox{u}{\ibox{(PQ)}}{\mathsf{false}}
     \red{}
-  \textsf{false}
+  \mathsf{false}
 \] This example is easy to find if one tries to plough through a
 proof of confluence: it is very clearly \emph{not} the case that
 $M \red{} N$ implies $M[P/u] \red{} N[P/u]$ if $u$ is under a
@@ -719,16 +711,14 @@ are beyond the scope of this paper, and largely still open.
 \begin{figure}
   \caption{Reduction for Intensional PCF}
   \label{fig:ipcfbeta}
-  \begin{framed}
     \input{ipcfbeta.tex}
-  \end{framed}
 \end{figure}
 
 \opt{th}{
 \begin{figure}
   \caption{Equational Theory for Intensional PCF}
   \label{fig:ipcfeq}
-  \input{ipcfeq.tex}
+    \input{ipcfeq.tex}
 \end{figure}
 }
 
@@ -749,7 +739,7 @@ congruence rule for the modality:
     \justifies
       \ctxt{\Delta}{\Gamma} \vdash \ibox{M} = \ibox{N} : \Box A
     \using
-      {(\Box\textsf{cong})}
+      {(\Box\mathsf{cong})}
   \end{prooftree}
 \] In fact, the very absence of this rule is what will allow modal
 types to become intensional. Otherwise, the only new rules are
@@ -758,7 +748,7 @@ and intensional operations, exemplified by the rule
 $(\Box\mathsf{int})$.
 
 We note that it seems perfectly reasonable to think that we should
-allow reductions under $\textsf{fix}$, i.e. admit the rule \[
+allow reductions under $\mathsf{fix}$, i.e. admit the rule \[
   \begin{prooftree}
       M \red{} N
     \justifies
@@ -829,7 +819,7 @@ Axiom \textsf{T} takes code to value, or intension to extension:
 
 \item[The G\"odel-L\"ob axiom: intensional fixed points]
 
-Since $(\Box\textsf{fix})$ is L\"ob's rule, we expect to be able
+Since $(\Box\mathsf{fix})$ is L\"ob's rule, we expect to be able
 to write down a term corresponding to the G\"odel-L\"ob axiom of
 provability logic. We can, and it is an \emph{intensional
 fixed-point combinator}: \[
@@ -847,15 +837,15 @@ fixed-point combinator}: \[
 
 \item[Undefined]
 
-The combination of $\textsf{eval}$ and intensional fixed points
+The combination of $\mathsf{eval}$ and intensional fixed points
 leads to non-termination, in a style reminiscent of the term
 $(\lambda x.\,xx)(\lambda x.\,xx)$ of the untyped
 $\lambda$-calculus. Let \[
-  \Omega_A \defeq \fixlob{z}{(\textsf{eval}_A\,z)}
+  \Omega_A \defeq \fixlob{z}{(\mathsf{eval}_A\,z)}
 \] Then $\vdash \Omega_A : A$, and \[
   \Omega_A
     \red{}\
-  \textsf{eval}_A\;\left(\ibox{\Omega_A}\right)\
+  \mathsf{eval}_A\;\left(\ibox{\Omega_A}\right)\
     \redt{}\
   \Omega_A
 \]
@@ -867,13 +857,13 @@ also definable in the iPCF.  Let \[
   \mathbf{Y}_A \defeq
     \fixlob{z}{
       \lambda f : A \rightarrow A.\
-        f (\textsf{eval}\ z\  f)
+        f (\mathsf{eval}\ z\  f)
     }
 \] Then $\vdash \mathbf{Y}_A : (A \rightarrow A) \rightarrow A$,
 so that \begin{align*}
   \mathbf{Y}_A
     \redt{}\
-  &\lambda f : A \rightarrow A.\ f (\textsf{eval}\ (\ibox{\mathbf{Y}_A})\ f)) \\
+  &\lambda f : A \rightarrow A.\ f (\mathsf{eval}\ (\ibox{\mathbf{Y}_A})\ f)) \\
     \redt{}\
   &\lambda f : A \rightarrow A.\ f (\mathbf{Y}_A\, f)
 \end{align*}
@@ -899,14 +889,14 @@ is slightly more adventurous: it is a computer virus.
 \subsection{`Parallel or' by dovetailing}
 
 In \cite{Plotkin1977} Gordon Plotkin proved the following
-theorem: there is no term $\textsf{por} : \textsf{Bool}
-\rightarrow \textsf{Bool} \rightarrow \textsf{Bool}$ of PCF such
-that $\textsf{por}\ \textsf{true}\ M \twoheadrightarrow_\beta
-\textsf{true}$ and  $\textsf{por}\ M\ \textsf{true}
-\twoheadrightarrow_\beta \textsf{true}$ for any $\vdash M :
-\textsf{Bool}$, whilst $\textsf{por}\ \textsf{false}\
-\textsf{false} \twoheadrightarrow_\beta \textsf{false}$.
-Intuitively, the problem is that $\textsf{por}$ has to first
+theorem: there is no term $\mathsf{por} : \mathsf{Bool}
+\rightarrow \mathsf{Bool} \rightarrow \mathsf{Bool}$ of PCF such
+that $\mathsf{por}\ \mathsf{true}\ M \twoheadrightarrow_\beta
+\mathsf{true}$ and  $\mathsf{por}\ M\ \mathsf{true}
+\twoheadrightarrow_\beta \mathsf{true}$ for any $\vdash M :
+\mathsf{Bool}$, whilst $\mathsf{por}\ \mathsf{false}\
+\mathsf{false} \twoheadrightarrow_\beta \mathsf{false}$.
+Intuitively, the problem is that $\mathsf{por}$ has to first
 examine one of its two arguments, and this can be troublesome if
 that argument is non-terminating. It follows that the
 \emph{parallel or} function is not definable in PCF. In order to
@@ -919,59 +909,58 @@ clunky operational semantics. See
 However, the parallel or function is a computable \emph{partial
 recursive functional} \cite{Streicher2006,Longley2015}. The way to
 prove that is intuitively the following: given two closed terms
-$M, N : \textsf{Bool}$, take turns in $\beta$-reducing each one
+$M, N : \mathsf{Bool}$, take turns in $\beta$-reducing each one
 for a one step: this is called \emph{dovetailing}. If at any point
 one of the two terms reduces to \textsf{true}, then output
 \textsf{true}. But if at any point both reduce to \textsf{false},
 then output \textsf{false}.
 
 This procedure is not definable in PCF because a candidate term
-$\textsf{por}$ does not have access to a code for its argument,
+$\mathsf{por}$ does not have access to a code for its argument,
 but can only inspect its value. However, in iPCF we can use the
 modality to obtain access to code, and intensional operations to
 implement reduction. Suppose we pick a reduction strategy
-$\red{}_r$. Then, let us include a constant $\textsf{tick} :
-\Box\textsf{Bool} \rightarrow \Box\textsf{Bool}$ that implements
+$\red{}_r$. Then, let us include a constant $\mathsf{tick} :
+\Box\mathsf{Bool} \rightarrow \Box\mathsf{Bool}$ that implements
 one step of this reduction strategy on closed terms: \[
   \begin{prooftree}
     M \red_r N, \text{ $M, N$ closed}
       \justifies
-    \textsf{tick}\ (\ibox{M}) \red{} \ibox{N}
+    \mathsf{tick}\ (\ibox{M}) \red{} \ibox{N}
   \end{prooftree}
-\] Also, let us include a constant $\textsf{done?} :
-\Box\textsf{Bool} \rightarrow \textsf{Bool}$, which tells us if a
+\] Also, let us include a constant $\mathsf{done?} :
+\Box\mathsf{Bool} \rightarrow \mathsf{Bool}$, which tells us if a
 closed term under a box is a normal form: \[
   \begin{prooftree}
     \text{$M$ closed, normal}
       \justifies
-    \textsf{done?}\ (\ibox{M}) \red{} \textsf{true}
+    \mathsf{done?}\ (\ibox{M}) \red{} \mathsf{true}
   \end{prooftree}
     \qquad
   \begin{prooftree}
     \text{$M$ closed, not normal}
       \justifies
-    \textsf{done?}\ (\ibox{M}) \red{} \textsf{false}
+    \mathsf{done?}\ (\ibox{M}) \red{} \mathsf{false}
   \end{prooftree}
 \] These two can be subsumed under our previous scheme for
 introducing intensional operations. The above argument is now
-implemented by the following term: \begin{align*}
-  \textsf{por} :\equiv\
+implemented by the following term:
+\begin{alignat*}{4}
+  \mathsf{por} :\equiv\
     \mathbf{Y}(
-      \lambda &\textsf{por}. \;
-      \lambda x : \Box \textsf{Bool}. \; \lambda y : \Box \textsf{Bool}. \\
-    &\supset_\textsf{Bool}
-      (\textsf{done?} \; x)\
-      &&(\textsf{lor} \; (\textsf{eval} \; x) (\textsf{eval} \; y)) \\
-    & &&(\supset_\textsf{Bool} (\textsf{done?} \; y)\
-      &&(\textsf{ror} \; (\textsf{eval} \; x) (\textsf{eval} \; y)) \\
-    & && &&(\textsf{por} \; (\textsf{tick} \; x)
-                            (\textsf{tick} \; y)))
-\end{align*} where $\textsf{lor}, \textsf{ror} : \textsf{Bool}
-\rightarrow \textsf{Bool} \rightarrow \textsf{Bool}$ are terms
+      \lambda\, &\mathsf{por}.\,
+      & \lambda x : \Box \mathsf{Bool}. \; \lambda y : \Box \mathsf{Bool}. \\
+      & & \supset_\mathsf{Bool} (\mathsf{done?} \; x)\
+        & (\mathsf{lor} \; (\mathsf{eval} \; x) (\mathsf{eval} \; y)) \\
+      & & & (\supset_\mathsf{Bool} (\mathsf{done?} \; y)\
+              && (\mathsf{ror} \; (\mathsf{eval} \; x) (\mathsf{eval} \; y)) \\
+      & & &   && (\mathsf{por} \; (\mathsf{tick} \; x) (\mathsf{tick} \; y)))
+\end{alignat*} where $\mathsf{lor}, \mathsf{ror} : \mathsf{Bool}
+\rightarrow \mathsf{Bool} \rightarrow \mathsf{Bool}$ are terms
 defining the left-strict and right-strict versions of the `or'
 connective respectively. Notice that the type of this term is
-$\Box\textsf{Bool} \rightarrow \Box\textsf{Bool} \rightarrow
-\textsf{Bool}$: we require \emph{intensional access} to the terms
+$\Box\mathsf{Bool} \rightarrow \Box\mathsf{Bool} \rightarrow
+\mathsf{Bool}$: we require \emph{intensional access} to the terms
 of boolean type in order to define this function!
 
 \subsection{A computer virus}
@@ -981,19 +970,19 @@ model computer viruses. There are many ways to formalise viruses.
 We will use the model of \opt{ipcf}{Adleman} \cite{Adleman1990},
 where files can be interpreted either as data, or as functions. We
 introduce a data type $F$ of files, and two constants \[
-  \textsf{in} : \Box (F \rightarrow F) \rightarrow F
+  \mathsf{in} : \Box (F \rightarrow F) \rightarrow F
     \quad \text{ and} \quad
-  \textsf{out} : F \rightarrow \Box (F \rightarrow F)
-\] If $F$ is a file, then $\textsf{out}\ F$ is that file
-interpreted as a program, and similarly for $\textsf{in}$. We
-ask that $\textsf{out}\ (\textsf{in}\ M) \red{} M$,
+  \mathsf{out} : F \rightarrow \Box (F \rightarrow F)
+\] If $F$ is a file, then $\mathsf{out}\ F$ is that file
+interpreted as a program, and similarly for $\mathsf{in}$. We
+ask that $\mathsf{out}\ (\mathsf{in}\ M) \red{} M$,
 making $\Box (F \rightarrow F)$ a retract of
 $F$.\opt{th}{\footnote{Actually, in \S\ref{sec:buildipwps} and
 \S\ref{sec:asmipcf} we will see it is very easy to construct
 examples for the apparently more natural situation where
-$\textsf{in} : \Box(\Box F \rightarrow F) \rightarrow F$,
-$\textsf{out}: F \rightarrow (\Box F \rightarrow F)$, and
-$\textsf{out}\ (\textsf{in}\ M) \red{}\ \textsf{eval}_{F
+$\mathsf{in} : \Box(\Box F \rightarrow F) \rightarrow F$,
+$\mathsf{out}: F \rightarrow (\Box F \rightarrow F)$, and
+$\mathsf{out}\ (\mathsf{in}\ M) \red{}\ \mathsf{eval}_{F
 \rightarrow F}\ M $. Nevertheless, our setup is slightly more
 well-adapted to virology.}} This might seem the same as the
 situation where $F \rightarrow F$ is a retract of $F$, which
@@ -1001,7 +990,7 @@ yields models of the (untyped) $\lambda$-calculus, and is not
 trivial to construct \cite[\S 5.4]{Barendregt1984}. However, in
 our case it is not nearly as worrying: $\Box(F \rightarrow F)$ is
 populated by programs and codes, not by actual functions. Under
-this interpretation, the pair $(\textsf{in}, \textsf{out})$
+this interpretation, the pair $(\mathsf{in}, \mathsf{out})$
 corresponds to a kind of G\"odel numbering---especially if $F$ is
 $\mathbb{N}$.
 
@@ -1012,18 +1001,18 @@ discussion, save from the fact that the virus needs to have access
 to code that it can use to infect other executables.  One can
 hence construct such a virus from its \emph{infection routine}, by
 using Kleene's SRT. Let us model it by a term \[
-  \vdash \textsf{infect} : \Box (F \rightarrow F)
+  \vdash \mathsf{infect} : \Box (F \rightarrow F)
     \rightarrow F \rightarrow F
 \] which accepts a piece of viral code and an executable file, and
 it returns either the file itself, or a version infected with the
 viral code. We can then define a term \[
-  \vdash \textsf{virus}
-    \defeq \fixlob{z}{(\textsf{infect}\ z)} :
+  \vdash \mathsf{virus}
+    \defeq \fixlob{z}{(\mathsf{infect}\ z)} :
       F \rightarrow F
 \] so that \[
-  \textsf{virus}\
+  \mathsf{virus}\
     \redt{}\
-  \textsf{infect}\ (\ibox{\textsf{virus}})
+  \mathsf{infect}\ (\ibox{\mathsf{virus}})
 \] which is a program that is ready to infect its input with its
 own code.
 
@@ -1058,11 +1047,11 @@ his careful reading and helpful comments, and Samson Abramsky for
 suggesting the topic of intensionality. This work was supported by
 the EPSRC (award reference 1354534).
 
-\bibliographystyle{entcs}
+\bibliographystyle{plain}
 % \input{ipcf-conf.bbl}
-\bibliography{\string~/cs/lib/library.bib}
+\bibliography{library.bib}
 
-% appendix
-\appendix
+% % appendix
+% \appendix
 
 \end{document}
